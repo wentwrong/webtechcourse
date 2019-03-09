@@ -8,13 +8,11 @@ sudo mv * ../../
 # - already installed on the server
 
 # 3. Create nginx config symlink 
-sudo ln -sf etc/nginx.conf /etc/nginx/sites-enabled/default
+sudo ln -sf /home/box/web/etc/nginx.conf /etc/nginx/sites-enabled/default
 
 # 4. Create gunicorn app symlink
-sudo ln -sf etc/gunicorn.conf /etc/gunicorn.d/gunicorn.conf
+sudo ln -sf /home/box/web/etc/gunicorn.conf /etc/gunicorn.d/test
 
-# 5. Restart gunicorn service
+# 5. Restart nginx && gunicorn daemons
+sudo service nginx restart
 sudo service gunicorn restart
-
-# 6. Restart nginx daemon
-sudo /etc/init.d/nginx restart
